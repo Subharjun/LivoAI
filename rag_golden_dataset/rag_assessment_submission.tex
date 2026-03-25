@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\title{Option B --- Golden Dataset for RAG}
+\author{Subharjun Bose}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{GitHub Repository}
+The complete dataset, raw textual transcripts, and methodology files have been uploaded to my GitHub profile and are available at: \\
+\url{https://github.com/Subharjun/LivoAI}
+
+\section*{Part 1: Question-Answer Pairs}
+
+\subsection*{QA\_001}
+\textbf{Question:} According to the CampusX video, what are the exactly two main reasons why Deep Learning became so famous recently?\\
+\textbf{Answer:} The video explicitly states there are two main reasons: 1) Applicability (it can be applied to a wide domain of problems like computer vision, NLP, bioinformatics, etc.) and 2) Performance (it provides state-of-the-art results that often beat human experts).\\
+\textbf{Source:} Video 3 (CampusX - What is Deep Learning), Timestamp: 00:09:52
+
+\subsection*{QA\_002}
+\textbf{Question:} How does 3Blue1Brown define a `neuron' in the simplest terms early in his neural network video?\\
+\textbf{Answer:} He defines a neuron simply as a `thing that holds a number, specifically a number between 0 and 1.'\\
+\textbf{Source:} Video 1 (3Blue1Brown - But what is a neural network?), Timestamp: 00:02:37
+
+\subsection*{QA\_003}
+\textbf{Question:} How does 3Blue1Brown contrast the numerical scale of parameters in a simple linear regression model with the number of parameters in GPT-3?\\
+\textbf{Answer:} He explains that a simple linear regression line is described by just two continuous parameters (the slope and the y-intercept), whereas a deep learning model like GPT-3 has massively more—specifically, 175 billion parameters.\\
+\textbf{Source:} Video 2 (3Blue1Brown - Transformers, the tech behind LLMs), Timestamp: 00:08:31
+
+\subsection*{QA\_004}
+\textbf{Question:} In the CodeWithHarry video, what specific real-world example does he give to illustrate a practical use-case for unsupervised learning?\\
+\textbf{Answer:} He gives the example of credit card fraud detection, where unsupervised learning looks at data points like IP addresses and transaction locations to determine which transactions might be fraudulent without predefined labels.\\
+\textbf{Source:} Video 4 (CodeWithHarry - All About ML \& Deep Learning), Timestamp: 00:07:54
+
+\subsection*{QA\_005}
+\textbf{Question:} For the handwritten digit recognition example in the first network video, what is the exact pixel resolution of the images, and how many corresponding neurons make up the first layer of the network?\\
+\textbf{Answer:} The exact resolution is 28x28 pixels, which corresponds to exactly 784 neurons making up the first layer of the network.\\
+\textbf{Source:} Video 1 (3Blue1Brown - But what is a neural network?), Timestamp: 00:03:09
+
+\section*{Part 2: Methodology Note}
+
+\subsection*{How did you decide which questions made the cut?}
+I chose questions that proactively test the known limitations and edge cases of Retrieval-Augmented Generation (RAG) systems across all four assigned videos. Instead of simple factual lookups (which any basic vector database can solve), the questions were selected to evaluate:
+\begin{itemize}[noitemsep]
+    \item \textbf{Exact Numeric Extraction:} Forcing the system to retrieve specific, rare numbers accurately without confusing them with other highly prevalent statistics.
+    \item \textbf{Scale Contrast:} Testing if the system can accurately pull contrasting statistics located in the same chunk (e.g., 2 vs 175 Billion parameters).
+    \item \textbf{Example Extraction:} Verifying if the RAG can link a high-level theoretical concept (Unsupervised Learning) to the exact real-world analog utilized by the speaker.
+\end{itemize}
+
+\subsection*{How did you actually pull them from the material?}
+The dataset was constructed exclusively using the raw textual transcripts extracted from the provided YouTube videos. Transcripts were fetched locally and manually reviewed to locate precise, authentic quotes and minute-level timestamps (e.g., 00:09:52, 00:08:31). I ensured that no external knowledge or pre-existing LLM understanding was required; the answers are explicitly grounded in the spoken words of the videos and tagged with their exact timestamps to verify authenticity.
+
+\subsection*{What are these questions testing — what would a wrong retrieval look like?}
+Here is a breakdown of what each specific question tests:
+\begin{itemize}
+    \item \textbf{QA\_001 (Reasoning Extraction):} Tests strict extraction of explicit numbered reasons. A poor RAG system would fall back to its internal memory and generate a general list instead of retrieving the exact 2 specific factors mentioned by CampusX.
+    \item \textbf{QA\_002 (Definitional Precision):} Tests direct definition extraction from a designated timestamp. A failure would occur if the model ignores the early ``simplest terms'' definition for a complex biological mapping from later in the video.
+    \item \textbf{QA\_003 (Numeric Scale Contrast):} Tests contrastive extraction of model sizes. An aggressive chunking strategy may miss the ``two parameters'' part of linear regression because ``175 billion'' dominates semantic searches.
+    \item \textbf{QA\_004 (Explicit Example Mapping):} Tests tying a machine learning sub-field to a specific localized example. A weak RAG might hallucinate a generic example instead of finding CodeWithHarry's specific usage of ``Credit Card Fraud Detection''.
+    \item \textbf{QA\_005 (Multi-Document Numeric Specificity):} Tests numeric extraction. A wrong retrieval would fail to locate the ``28x28'' and ``784'' integers, potentially confusing them with other integers like ``13,000'' stated later.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "QA_001",
+    "question": "According to the CampusX video, what are the exactly two main reasons why Deep Learning became so famous recently?",
+    "answer": "The video explicitly states there are two main reasons: 1) Applicability (it can be applied to a wide domain of problems like computer vision, NLP, bioinformatics, etc.) and 2) Performance (it provides state-of-the-art results that often beat human experts).",
+    "source": "Video 3 (CampusX - What is Deep Learning), Timestamp: 00:09:52"
+  },
+  {
+    "id": "QA_002",
+    "question": "How does 3Blue1Brown define a 'neuron' in the simplest terms early in his neural network video?",
+    "answer": "He defines a neuron simply as a 'thing that holds a number, specifically a number between 0 and 1.'",
+    "source": "Video 1 (3Blue1Brown - But what is a neural network?), Timestamp: 00:02:37"
+  },
+  {
+    "id": "QA_003",
+    "question": "How does 3Blue1Brown contrast the numerical scale of parameters in a simple linear regression model with the number of parameters in GPT-3?",
+    "answer": "He explains that a simple linear regression line is described by just two continuous parameters (the slope and the y-intercept), whereas a deep learning model like GPT-3 has massively more—specifically, 175 billion parameters.",
+    "source": "Video 2 (3Blue1Brown - Transformers, the tech behind LLMs), Timestamp: 00:08:31"
+  },
+  {
+    "id": "QA_004",
+    "question": "In the CodeWithHarry video, what specific real-world example does he give to illustrate a practical use-case for unsupervised learning?",
+    "answer": "He gives the example of credit card fraud detection, where unsupervised learning looks at data points like IP addresses and transaction locations to determine which transactions might be fraudulent without predefined labels.",
+    "source": "Video 4 (CodeWithHarry - All About ML & Deep Learning), Timestamp: 00:07:54"
+  },
+  {
+    "id": "QA_005",
+    "question": "For the handwritten digit recognition example in the first network video, what is the exact pixel resolution of the images, and how many corresponding neurons make up the first layer of the network?",
+    "answer": "The exact resolution is 28x28 pixels, which corresponds to exactly 784 neurons making up the first layer of the network.",
+    "source": "Video 1 (3Blue1Brown - But what is a neural network?), Timestamp: 00:03:09"
+  }
+]
